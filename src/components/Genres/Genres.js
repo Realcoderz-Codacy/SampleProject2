@@ -33,11 +33,7 @@ const Genres = ({
 
   useEffect(() => {
     fetchGenres();
-
-    return () => {
-      setGenres({}); // unmounting
-    };
-    // eslint-disable-next-line
+    return () => setGenres({});
   }, []);
 
   return (

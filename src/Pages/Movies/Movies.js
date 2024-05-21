@@ -12,7 +12,6 @@ const Movies = () => {
   const [content, setContent] = useState([]);
   const [numOfPages, setNumOfPages] = useState();
   const genreforURL = useGenre(selectedGenres);
-  // console.log(selectedGenres);
 
   const fetchMovies = async () => {
     const { data } = await axios.get(
@@ -25,7 +24,6 @@ const Movies = () => {
   useEffect(() => {
     window.scroll(0, 0);
     fetchMovies();
-    // eslint-disable-next-line
   }, [genreforURL, page]);
 
   return (
@@ -40,18 +38,17 @@ const Movies = () => {
         setPage={setPage}
       />
       <div className="trending">
-        {content &&
-          content.map((c) => (
-            <SingleContent
-              key={c.id}
-              id={c.id}
-              poster={c.poster_path}
-              title={c.title || c.name}
-              date={c.first_air_date || c.release_date}
-              media_type="movie"
-              vote_average={c.vote_average}
-            />
-          ))}
+        {content && content.map((c) => (
+          <SingleContent
+            key={c.id}
+            id={c.id}
+            poster={c.poster_path}
+            title={c.title || c.name}
+            date={c.first_air_date || c.release_date}
+            media_type="movie"
+            vote_average={c.vote_average}
+          />
+        ))}
       </div>
       {numOfPages > 1 && (
         <CustomPagination setPage={setPage} numOfPages={numOfPages} />

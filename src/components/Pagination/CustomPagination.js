@@ -3,13 +3,10 @@ import Pagination from "@material-ui/lab/Pagination";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 
 const darkTheme = createMuiTheme({
-  palette: {
-    type: "dark",
-  },
+  palette: { type: "dark" },
 });
 
 export default function CustomPagination({ setPage, numOfPages = 10 }) {
-  // Scroll to top when page changes
   const handlePageChange = (page) => {
     setPage(page);
     window.scroll(0, 0);

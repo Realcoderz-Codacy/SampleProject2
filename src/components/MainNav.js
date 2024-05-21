@@ -24,23 +24,24 @@ export default function SimpleBottomNavigation() {
   const history = useHistory();
 
   useEffect(() => {
-    if (value === 0) {
-      history.push("/");
-    } else if (value === 1) {
-      history.push("/movies");
-    } else if (value === 2) {
-      history.push("/series");
-    } else if (value === 3) {
-      history.push("/search");
+    switch(value){
+      case 1:
+        history.push("/movies");
+        break;
+      case 2:
+        history.push("/series");
+        break;
+      case 3:
+        history.push("/search");
+        break;
+      default: history.push("/");
     }
   }, [value, history]);
 
   return (
     <BottomNavigation
       value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
+      onChange={(event, newValue) => setValue(newValue)}
       showLabels
       className={classes.root}
     >

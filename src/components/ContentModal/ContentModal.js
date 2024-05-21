@@ -38,13 +38,9 @@ export default function TransitionsModal({ children, media_type, id }) {
   const [content, setContent] = useState();
   const [video, setVideo] = useState();
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  const handleOpen = () => setOpen(true);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleClose = () => setOpen(false);
 
   const fetchData = async () => {
     const { data } = await axios.get(
@@ -52,7 +48,6 @@ export default function TransitionsModal({ children, media_type, id }) {
     );
 
     setContent(data);
-    // console.log(data);
   };
 
   const fetchVideo = async () => {
@@ -66,7 +61,6 @@ export default function TransitionsModal({ children, media_type, id }) {
   useEffect(() => {
     fetchData();
     fetchVideo();
-    // eslint-disable-next-line
   }, []);
 
   return (
